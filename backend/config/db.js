@@ -1,8 +1,11 @@
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb+srv://codechamp97:ZE9Dyhhtdx8lWLd7@dev.wr5w18r.mongodb.net/one_green_diary");
+    const db_url = process.env.MONGO_URI;
+    await mongoose.connect(db_url);
     console.log("MongoDB connected...");
   } catch (err) {
     console.error(err.message);
